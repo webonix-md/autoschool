@@ -43,7 +43,6 @@
   </script>
 </head>
 <body data-root="../" data-section="">
-<!-- Файл собран скриптом tools/build.py — правьте шаблоны в tools/templates и данные в tools/site.json -->
 <a class="skip" href="#main">Salt la conținut</a>
 <div class="topbar">
   <div class="wrap topbar__in">
@@ -84,7 +83,12 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero">
+  <section class="hero hero--photo">
+    <!-- фото тает в фон страницы (градиенты цвета бумаги в .hero__mask) -->
+    <div class="hero__media" aria-hidden="true">
+      <img src="../img/photo/hero-road2.jpg" width="1920" height="1440" alt="" fetchpriority="high">
+      <div class="hero__mask"></div>
+    </div>
     <div class="wrap hero__in">
       <div class="hero__text">
         <p class="eyebrow">Școală auto categoria B · Chișinău, Centru</p>
@@ -203,9 +207,9 @@
   <!-- ============ PROFESORUL ============ -->
   <section class="section section--ink" id="teacher">
     <div class="wrap teacher">
-      <div class="teacher__photo" aria-hidden="true">
-        <!-- DEMO: de înlocuit cu fotografia profesorului (<img> înăuntru) -->
-        <span>VR</span>
+      <div class="teacher__photo">
+        <!-- СТОК (Pexels 7858229) — заменить на фото преподавателя -->
+        <img src="../img/photo/teacher.jpg" width="640" height="800" alt="Victor Rusu" loading="lazy">
       </div>
       <div class="teacher__text">
         <span class="sec-num sec-num--light">§ 03 · Profesorul de teorie</span>
@@ -322,7 +326,7 @@
   </section>
 
   <!-- ============ MINI-TEST ============ -->
-  <section class="section section--ink" id="quiz">
+  <section class="section section--ink section--photo-bg" id="quiz">
     <div class="wrap quiz-wrap">
       <header class="sec-head sec-head--light">
         <span class="sec-num sec-num--light">§ 07</span>
@@ -412,7 +416,7 @@
           <span class="sec-num">§ 10</span>
           <h2>Veniți să facem cunoștință</h2>
         </header>
-        <p class="contacts__addr">Chișinău, Centru,<br><b>str. Exemplu 1</b>, etajul 2, intrarea din curte</p>
+        <p class="contacts__addr">Chișinău, Centru,<br><b>str. Exemplu 1</b>, intrarea din stradă</p>
         <p class="contacts__how"><b>Cum ajungeți:</b> troleibuzele 1, 22, autobuzele 2, 30, rutierele 100, 125 — până la stația „Exemplu”.</p>
         <ul class="phones">
           <li><a href="tel:+37360000000">+373 600 00 000</a><span>mobil · Viber</span></li>

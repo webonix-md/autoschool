@@ -29,7 +29,6 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body data-root="../" data-section="about">
-<!-- Файл собран скриптом tools/build.py — правьте шаблоны в tools/templates и данные в tools/site.json -->
 <a class="skip" href="#main">Salt la conținut</a>
 <div class="topbar">
   <div class="wrap topbar__in">
@@ -68,12 +67,21 @@
 </header>
 
 <main id="main">
-<section class="page-head">
+<section class="page-head page-head--photo">
+  <!-- фото-фон шапки: файл img/photo/head-about.jpg — замените своим -->
+  <div class="page-head__media" aria-hidden="true">
+    <img src="../img/photo/head-about.jpg" alt="">
+    <div class="page-head__mask"></div>
+  </div>
   <div class="wrap">
     <nav class="crumbs" aria-label="Navigare"><a href="../ro/index.html">Acasă</a><span aria-hidden="true">/</span><span>Despre noi</span></nav>
     <p class="eyebrow">Despre noi</p>
     <h1>Școala auto DRIVE SCHOOL</h1>
     <p class="page-head__lead">Pregătim conducători auto de categoria B după un program acreditat. Sală de studii proprie, teren de instruire și 12 rute prin oraș.</p>
+    <div class="page-head__actions">
+      <span class="chip">Acreditare <b>FC 0000-00</b></span>
+      <a class="btn btn--accent" href="tel:+37360000000">Înscriere: +373 600 00 000</a>
+    </div>
   </div>
 </section>
 
@@ -103,10 +111,10 @@
 
 <section class="section section--ink" id="teacher">
   <div class="wrap teacher">
-    <div class="teacher__photo" aria-hidden="true">
-      <!-- DEMO: de înlocuit cu fotografia lui Victor Rusu -->
-      <span>VR</span>
-    </div>
+    <div class="teacher__photo">
+        <!-- СТОК (Pexels 7858229) — заменить на фото преподавателя -->
+        <img src="../img/photo/teacher.jpg" width="640" height="800" alt="Victor Rusu" loading="lazy">
+      </div>
     <div class="teacher__text">
       <span class="sec-num sec-num--light">§ 02 · Profesorul de teorie</span>
       <h2>Victor Rusu</h2>
@@ -129,7 +137,7 @@
     </header>
     <div class="places">
       <article class="place">
-        <div class="photo-slot"><span>Foto sala de studii</span></div>
+        <div class="photo-slot"><img src="../img/photo/class.jpg" width="800" height="600" alt="Sala de studii" loading="lazy"></div>
         <h3>Sala de studii</h3>
         <ul class="ticks">
           <li>Mobilier nou și aer condiționat</li>
@@ -140,7 +148,7 @@
         </ul>
       </article>
       <article class="place">
-        <div class="photo-slot"><span>Foto terenul</span></div>
+        <div class="photo-slot"><img src="../img/photo/ploschadka.jpg" width="800" height="600" alt="Terenul de instruire cu conuri" loading="lazy"></div>
         <h3>Terenul de instruire</h3>
         <ul class="ticks">
           <li>Dotat cu toate elementele necesare pentru exercițiile de examen</li>
@@ -149,7 +157,7 @@
         </ul>
       </article>
       <article class="place">
-        <div class="photo-slot"><span>Foto pe traseu</span></div>
+        <div class="photo-slot"><img src="../img/photo/vozhdenie.jpg" width="800" height="600" alt="Lecție de conducere cu instructorul" loading="lazy"></div>
         <h3>Rute prin oraș</h3>
         <ul class="ticks">
           <li>12 rute de instruire prin oraș</li>

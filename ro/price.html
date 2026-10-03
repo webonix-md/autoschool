@@ -29,7 +29,6 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body data-root="../" data-section="price">
-<!-- Файл собран скриптом tools/build.py — правьте шаблоны в tools/templates и данные в tools/site.json -->
 <a class="skip" href="#main">Salt la conținut</a>
 <div class="topbar">
   <div class="wrap topbar__in">
@@ -68,12 +67,22 @@
 </header>
 
 <main id="main">
-<section class="page-head">
+<section class="page-head page-head--photo">
+  <!-- фото-фон шапки: файл img/photo/head-price.jpg — замените своим -->
+  <div class="page-head__media" aria-hidden="true">
+    <img src="../img/photo/head-price.jpg" alt="">
+    <div class="page-head__mask"></div>
+  </div>
   <div class="wrap">
     <nav class="crumbs" aria-label="Navigare"><a href="../ro/index.html">Acasă</a><span aria-hidden="true">/</span><span>Prețuri</span></nav>
     <p class="eyebrow">Taxe și servicii</p>
     <h1>Cât costă instruirea la DRIVE SCHOOL</h1>
     <p class="page-head__lead">Costul total este stipulat în contract și nu crește spre sfârșitul cursului. Combustibilul și toate cheltuielile sunt deja incluse în prețul orei de conducere.</p>
+    <div class="page-head__actions">
+      <span class="chip">de la <b>11 140</b> lei</span>
+      <a class="btn btn--accent" href="tel:+37360000000">Înscriere</a>
+      <a class="btn" href="index.html#groups">Orarul grupelor</a>
+    </div>
   </div>
 </section>
 

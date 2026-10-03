@@ -29,7 +29,6 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-root="" data-section="about">
-<!-- Файл собран скриптом tools/build.py — правьте шаблоны в tools/templates и данные в tools/site.json -->
 <a class="skip" href="#main">К содержанию</a>
 <div class="topbar">
   <div class="wrap topbar__in">
@@ -68,12 +67,21 @@
 </header>
 
 <main id="main">
-<section class="page-head">
+<section class="page-head page-head--photo">
+  <!-- фото-фон шапки: файл img/photo/head-about.jpg — замените своим -->
+  <div class="page-head__media" aria-hidden="true">
+    <img src="img/photo/head-about.jpg" alt="">
+    <div class="page-head__mask"></div>
+  </div>
   <div class="wrap">
     <nav class="crumbs" aria-label="Навигация"><a href="index.html">Главная</a><span aria-hidden="true">/</span><span>О школе</span></nav>
     <p class="eyebrow">О школе</p>
-    <h1>Автошкола DRIVE SCHOOL</h1>
+    <h1>Автошкола <br> DRIVE SCHOOL</h1>
     <p class="page-head__lead">Готовим водителей категории B по аккредитованной программе. Свой учебный класс, площадка и 12 учебных маршрутов по городу.</p>
+    <div class="page-head__actions">
+      <span class="chip">Аккредитация <b>FC 0000-00</b></span>
+      <a class="btn btn--accent" href="tel:+37360000000">Записаться: +373 600 00 000</a>
+    </div>
   </div>
 </section>
 
@@ -103,10 +111,10 @@
 
 <section class="section section--ink" id="teacher">
   <div class="wrap teacher">
-    <div class="teacher__photo" aria-hidden="true">
-      <!-- ДЕМО: заменить на фото Юрия Фёдоровича -->
-      <span>ВР</span>
-    </div>
+    <div class="teacher__photo">
+        <!-- СТОК (Pexels 7858229) — заменить на фото преподавателя -->
+        <img src="img/photo/teacher.jpg" width="640" height="800" alt="Виктор Русу" loading="lazy">
+      </div>
     <div class="teacher__text">
       <span class="sec-num sec-num--light">§ 02 · Преподаватель теории</span>
       <h2>Виктор Русу</h2>
@@ -129,7 +137,7 @@
     </header>
     <div class="places">
       <article class="place">
-        <div class="photo-slot"><span>Фото класса</span></div>
+        <div class="photo-slot"><img src="img/photo/class.jpg" width="800" height="600" alt="Учебный класс" loading="lazy"></div>
         <h3>Учебный класс</h3>
         <ul class="ticks">
           <li>Новая мебель и кондиционер</li>
@@ -140,7 +148,7 @@
         </ul>
       </article>
       <article class="place">
-        <div class="photo-slot"><span>Фото площадки</span></div>
+        <div class="photo-slot"><img src="img/photo/ploschadka.jpg" width="800" height="600" alt="Учебная площадка с конусами" loading="lazy"></div>
         <h3>Учебная площадка</h3>
         <ul class="ticks">
           <li>Оборудована всеми элементами для экзаменационных упражнений</li>
@@ -149,7 +157,7 @@
         </ul>
       </article>
       <article class="place">
-        <div class="photo-slot"><span>Фото на маршруте</span></div>
+        <div class="photo-slot"><img src="img/photo/vozhdenie.jpg" width="800" height="600" alt="Занятие по вождению с инструктором" loading="lazy"></div>
         <h3>Маршруты по городу</h3>
         <ul class="ticks">
           <li>12 учебных маршрутов по городу</li>

@@ -140,9 +140,86 @@ p { margin: 0; }
 .hero__facts li + li { padding-left: 16px; border-left: 1px solid var(--line); }
 .hero__facts b { display: block; font: 700 30px/1.1 var(--font-head); color: var(--ink); margin-bottom: 6px; }
 
+/* hero с фото: фото справа тает в цвет бумаги (рецепт milkmark), точечная сетка — поверх всего */
+.hero--photo { position: relative; overflow: hidden; background-image: none; }
+.hero--photo::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 22px 22px; opacity: .55;
+}
+.hero--photo .hero__in { position: relative; z-index: 2; }
+.hero__media { position: absolute; top: 0; right: 0; bottom: 0; width: 65%; }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 0%; display: block; }
+.hero__mask {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(98deg, #F4F1EA 0%, #F4F1EA 22%, rgba(244,241,234,.94) 29%, rgba(244,241,234,.72) 36%,
+      rgba(244,241,234,.34) 44%, rgba(244,241,234,.08) 51%, rgba(244,241,234,0) 57%),
+    linear-gradient(#F4F1EA, rgba(244,241,234,.72) 5%, rgba(244,241,234,.32) 11%, rgba(244,241,234,.1) 15%, rgba(244,241,234,0) 20%),
+    linear-gradient(to top, #F4F1EA, rgba(244,241,234,.92) 6%, rgba(244,241,234,.6) 14%, rgba(244,241,234,.28) 24%,
+      rgba(244,241,234,.08) 32%, rgba(244,241,234,0) 38%),
+    /* общая «дымка» поверх всего фото: .3 — светлее/бледнее, 0 — фото как есть */
+    linear-gradient(rgba(244,241,234,.3), rgba(244,241,234,.3));
+}
+
+/* шапки внутренних страниц с фото-фоном: то же растворение, что на главной */
+/* все шапки с фото — одной высоты, содержимое по центру по вертикали.
+   --head-h: от высоты экрана — 72% окна, но не меньше 580px (влезает самое длинное содержимое) и не больше 820px
+   (на ноутбуке внизу выглядывает следующий блок — понятно, что надо листать).
+   Это МИНИМУМ: если длинный заголовок не влезает, шапка станет выше, но не обрежет текст. */
+.page-head.page-head--photo {  /* .page-head.… — чтобы перебить общие отступы .page-head ниже в файле */
+  --head-h: clamp(580px, 72vh, 820px);
+  position: relative; overflow: hidden; background-image: none;
+  min-height: var(--head-h); padding: 56px 0; display: flex; align-items: center;
+}
+.page-head--photo > .wrap { width: 100%; }
+/* .page-head--photo::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 22px 22px; opacity: .55;
+} */
+.page-head--photo .wrap { position: relative; z-index: 2; }
+/* текст не заходит на фото: заголовок и подзаголовок уже, чем у шапки без фото */
+.page-head--photo h1 { max-width: 720px; font-size: clamp(32px, 4.4vw, 60px); line-height: 1.08; }
+.page-head--photo .page-head__lead { max-width: 600px; font-size: clamp(17px, 1.4vw, 20px); margin-top: 20px; }
+
+/* строка действий в шапке: плашка-факт + кнопки */
+.page-head__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 32px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 18px;
+  border: 2px dashed var(--ink); background: rgba(255, 253, 248, .85);
+  font: 600 16px/1.2 var(--font); color: var(--ink);
+}
+.chip b { font: 700 18px/1 var(--font-head); color: var(--accent-ink); }
+/* «Пункты 39–125» на главах ПДД — маленькой плашкой */
+.page-head--photo .page-head__meta {
+  display: inline-block; margin-top: 18px; padding: 6px 12px;
+  border: 1.5px solid var(--ink); background: rgba(255, 253, 248, .85);
+  font-size: 14px; font-weight: 600; color: var(--ink);
+}
+.page-head__media { position: absolute; top: 0; right: 0; bottom: 0; width: 50%; }
+.page-head__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; display: block; }
+.page-head__mask {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    /* слева: сплошной фон под заголовок, тает вправо */
+    linear-gradient(98deg, #F4F1EA 0%, #F4F1EA 12%, rgba(244,241,234,.94) 20%, rgba(244,241,234,.72) 30%,
+      rgba(244,241,234,.34) 42%, rgba(244,241,234,.08) 54%, rgba(244,241,234,0) 62%),
+    /* снизу: переход к линии под шапкой */
+    linear-gradient(to top, #F4F1EA, rgba(244,241,234,.6) 12%, rgba(244,241,234,0) 35%),
+    /* общая «дымка»: 0 — фото как есть, .3 — бледнее */
+    linear-gradient(rgba(244,241,234,.15), rgba(244,241,234,.15));
+}
+
+/* секция с тёмным фото-фоном (тест): фото почти утоплено в чернила */
+.section--photo-bg {
+  background:
+    linear-gradient(rgba(23,25,30,.6), rgba(23,25,30,.83)),
+    url("../img/photo/quiz-crossroad2.jpg") center / cover no-repeat, var(--ink);
+}
+.section--photo-bg .q { background: rgba(30, 32, 38, .72); backdrop-filter: blur(2px); }
+
 /* билет */
 .ticket {
-  position: relative; margin-top: 8px;
+  position: relative; margin-top: 78px;
   background: var(--card); border: 2px solid var(--ink); box-shadow: var(--shadow-card);
 }
 .ticket__head {
@@ -351,11 +428,11 @@ p { margin: 0; }
 /* =========================================================
    ВНУТРЕННИЕ СТРАНИЦЫ: ПДД, статьи, тест
    ========================================================= */
-.page-head { padding: 56px 0 44px; border-bottom: 2px solid var(--ink); background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 22px 22px; }
+.page-head { padding: 140px 0 140px; border-bottom: 2px solid var(--ink); background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 22px 22px; }
 .crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; color: var(--ink2); margin-bottom: 18px; }
 .crumbs a { color: var(--ink2); }
 .crumbs span[aria-hidden] { color: var(--line); }
-.page-head h1 { font-size: clamp(28px, 4.6vw, 48px); max-width: 860px; }
+.page-head h1 { font-size: clamp(28px, 4.6vw, 48px); max-width: 700px; }
 .page-head__lead { margin-top: 16px; max-width: 720px; font-size: 18px; color: var(--ink2); }
 .page-head__meta { margin-top: 14px; font-size: 14px; color: var(--ink2); }
 
@@ -418,7 +495,7 @@ p { margin: 0; }
 .jump input { width: 120px; height: 50px; padding: 0 14px; font: 600 18px var(--font); border: 2px solid var(--ink); border-radius: var(--r); background: var(--card); }
 .jump__msg { flex-basis: 100%; font-size: 14px; color: var(--bad); min-height: 20px; }
 .chapters { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
-.chapters li a { display: grid; grid-template-columns: 120px 1fr auto; gap: 20px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.chapters li a { display: grid; grid-template-columns: 120px 1fr auto; gap: 32px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
 .chapters li a:hover b { color: var(--accent-ink); }
 .chapters__no { font: 600 14px/1 var(--font-head); letter-spacing: .04em; color: var(--accent-ink); text-transform: uppercase; }
 .chapters b { font-size: 19px; font-weight: 600; }
@@ -574,6 +651,23 @@ p { margin: 0; }
   .nav__cta { margin: 24px 0 0; min-height: 52px; font-size: 17px; }
   .header { top: 0; }
   .hero__in { grid-template-columns: 1fr; }
+  /* ТЕЛЕФОН/ПЛАНШЕТ: фото — отдельной чёткой полосой сверху на всю ширину, без вуали;
+     снизу тает в цвет страницы, текст — ниже, на чистом фоне.
+     Высота полосы: --strip-h; какой частью кадра повёрнуто фото — object-position у img. */
+  /* высота полосы: планшет (до 860px) — 360px, телефон (до 560px) — 210px, см. ниже */
+  .hero.hero--photo, .page-head.page-head--photo { --strip-h: 360px; display: block; min-height: 0; padding-top: 0; }
+  .page-head.page-head--photo { padding-bottom: 44px; }
+  .hero__media, .page-head__media {
+    position: relative; inset: auto; width: 100% !important; /* !important — перебивает ширину, заданную прямо в странице */
+    height: var(--strip-h);
+  }
+  .hero__media img, .page-head__media img { object-position: 50% 45%; }
+  .hero__mask, .page-head__mask {
+    background: linear-gradient(to top, #F4F1EA 0%, rgba(244,241,234,.75) 14%, rgba(244,241,234,.3) 30%, rgba(244,241,234,0) 48%);
+  }
+  .hero--photo .hero__in { margin-top: -8px; }
+  .page-head--photo > .wrap { margin-top: -6px; }
+  .page-head__actions .btn, .page-head__actions .chip { flex: 1 1 100%; justify-content: center; }
   .ticket { max-width: 440px; }
   .why { grid-template-columns: 1fr 1fr; }
   .teacher { grid-template-columns: 1fr; gap: 36px; }
@@ -599,6 +693,7 @@ p { margin: 0; }
 
 @media (max-width: 560px) {
   :root { --gutter: 16px; }
+  .hero.hero--photo, .page-head.page-head--photo { --strip-h: 210px; }  /* полоса с фото на телефоне */
   body { font-size: 16px; }
   .topbar__in { justify-content: center; }
   .topbar__in > span:first-child { display: none; }
