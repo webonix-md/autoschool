@@ -210,11 +210,11 @@ p { margin: 0; }
 }
 
 /* секция с тёмным фото-фоном (тест): фото почти утоплено в чернила */
-.section--photo-bg {
+/* .section--photo-bg {
   background:
     linear-gradient(rgba(23,25,30,.6), rgba(23,25,30,.83)),
     url("../img/photo/quiz-crossroad2.jpg") center / cover no-repeat, var(--ink);
-}
+} */
 .section--photo-bg .q { background: rgba(30, 32, 38, .72); backdrop-filter: blur(2px); }
 
 /* билет */
